@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import type { App } from 'vue'; // 修改: 使用类型导入
 import DraggableList from './components/DraggableList.vue';
 
 export { DraggableList };

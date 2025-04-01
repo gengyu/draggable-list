@@ -6,8 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
-import { useDraggableList } from '@drag-list/core';
-import type { DraggableItem } from '@drag-list/core';
+import { useDraggableList, DraggableItem } from '@drag-list/core';
 
 interface Props {
   longPressDuration?: number;
@@ -16,11 +15,7 @@ interface Props {
   draggingClass?: string;
 }
 
-export default defineComponent<Props, {
-  dragStart: [item: DraggableItem],
-  dragMove: [item: DraggableItem, currentIndex: number],
-  dragEnd: [startIndex: number, endIndex: number],
-}>({
+export default defineComponent<Props>({
   name: 'DraggableList',
   props: {
     longPressDuration: {

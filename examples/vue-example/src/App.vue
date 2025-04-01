@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { DraggableItem } from '@drag-list/core';
+import { DraggableItem } from '@drag-list/vue';
 
 interface Item {
   id: number;

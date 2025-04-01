@@ -64,7 +64,7 @@ type DragEvent = MouseEvent | TouchEvent;
  * @param options 配置选项
  * @returns DraggableListReturn
  */
-export const useDraggableList = (options: DraggableListOptions): DraggableListReturn => {
+export function useDraggableList(options: DraggableListOptions): DraggableListReturn {
   const {
     longPressDuration = 100,
     container,
@@ -328,4 +328,4 @@ export const useDraggableList = (options: DraggableListOptions): DraggableListRe
     init: onMounted,
     destroy: onUnmounted
   };
-};
+}

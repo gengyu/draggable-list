@@ -1,6 +1,6 @@
 {
   "name": "@drag-list/core",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "private": false,
   "description": "一个轻量级的可拖动排序列表组件",
   "main": "dist/index.js",
@@ -25,11 +25,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "eslint": "^8.57.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
-    "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17"
+    "@types/node": "^20.17.29",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "postcss": "^8.5.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
   }
-} 
+}
