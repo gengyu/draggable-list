@@ -1,0 +1,37 @@
+{
+  "name": "@drag-list/root",
+  "private": true,
+  "version": "1.0.3",
+  "description": "一个轻量级的可拖动排序列表组件",
+
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "prepublishOnly": "pnpm build",
+    "publish": "npm publish --registry https://registry.npmjs.org/",
+    "publish:beta": "npm publish --tag beta --registry https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "drag",
+    "sort",
+    "list",
+    "typescript",
+    "vue"
+  ],
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17"
+  }
+}

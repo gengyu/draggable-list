@@ -1,0 +1,25 @@
+{
+  "name": "@drag-list/example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.2.5",
+    "@drag-list/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.10.2",
+    "autoprefixer": "^10.4.21",
+    "less": "^4.2.2",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^4.9.5",
+    "vite": "^6.2.3",
+    "vue-tsc": "^0.3.0"
+  }
+}

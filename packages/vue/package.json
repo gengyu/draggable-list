@@ -1,0 +1,48 @@
+{
+  "name": "@drag-list/vue",
+  "version": "1.0.3",
+  "private": false,
+  "description": "Vue 3 可拖动排序列表组件",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint src --ext .ts,.vue",
+    "test": "jest",
+    "publish": "npm publish --registry https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "drag",
+    "sort",
+    "list",
+    "vue",
+    "vue3",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@drag-list/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/compiler-sfc": "^3.4.21",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "typescript": "~5.4.2",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3",
+    "vue": "^3.4.21",
+    "@vue/runtime-core": "^3.4.21",
+    "@vue/tsconfig": "^0.5.1"
+  }
+} 
