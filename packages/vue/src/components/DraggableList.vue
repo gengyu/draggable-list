@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
-import { useDraggableList, DraggableItem } from '@drag-list/core';
+import {type DraggableItem, useDraggableList} from '@drag-list/core';
 
 interface Props {
   longPressDuration?: number;
