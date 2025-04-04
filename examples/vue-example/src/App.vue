@@ -3,7 +3,7 @@
     <h1>Vue 可拖动列表示例</h1>
     <div class="demo-section">
       <h2>基础示例</h2>
-      <DraggableList @dragEnd="handleDragEnd">
+      <DraggableList @dragEnd="handleDragEnd" data21="1">
         <div v-for="item in items" :key="item.id" class="dl-item">
           {{ item.content }}
         </div>

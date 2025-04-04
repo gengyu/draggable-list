@@ -5,11 +5,11 @@
   "description": "一个轻量级的可拖动排序列表组件",
   "scripts": {
     "build": "pnpm -r build",
-    "dev": "pnpm -r dev",
+    "dev": "pnpm -r --parallel dev",
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
     "prunet": "pnpm store prune",
-    "up": "pnpm   -r up",
+    "up": "pnpm  -r update --latest",
     "prepublishOnly": "pnpm build",
     "publish": "npm publish --registry https://registry.npmjs.org/",
     "publish:beta": "npm publish --tag beta --registry https://registry.npmjs.org/"
@@ -28,9 +28,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@types/node": "^20.17.29",
+    "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^8.57.1",
+    "eslint": "^9.23.0",
     "postcss": "^8.5.3",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2"

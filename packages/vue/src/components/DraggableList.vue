@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
-import {type DraggableItem, useDraggableList} from '@drag-list/core';
+import { type DraggableItem, useDraggableList} from '@drag-list/core';
 
 interface Props {
   longPressDuration?: number;
@@ -39,7 +39,7 @@ export default defineComponent<Props>({
   setup(props, { emit }) {
     const container = ref<HTMLElement | null>(null);
 
-    const { init, destroy } = useDraggableList({
+    const { append, destroy } = useDraggableList({
       container: container.value!,
       longPressDuration: props.longPressDuration,
       enableTouch: props.enableTouch,
@@ -57,7 +57,7 @@ export default defineComponent<Props>({
     });
 
     onMounted(() => {
-      init();
+      append({ container: container.value});
     });
 
     onUnmounted(() => {

@@ -26,6 +26,8 @@ export default defineConfig({
         // '@drag-list/core'
       ],
       output: {
+        sourcemap: true,
+        exports: 'named',
         globals: {
           vue: 'Vue',
           // '@drag-list/core': 'DragListCore'

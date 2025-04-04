@@ -26,7 +26,7 @@ const items = ref(['项目 1', '项目 2', '项目 3', '项目 4', '项目 5']);
 
 const {state, init, destroy } = useDraggableList({
   container: '.dl-container',
-  itemSelector: '.dl-item',
+  // itemSelector: '.dl-item',
   onDragEnd: (startIndex, endIndex) => {
     items.value.splice(endIndex, 0,
         items.value.splice(startIndex, 1)[0]

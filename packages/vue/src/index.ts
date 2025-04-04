@@ -1,7 +1,11 @@
-import type { App } from 'vue'; // 修改: 使用类型导入
-import DraggableList from './components/DraggableList.vue';
+import type {App} from 'vue';
 
-export { DraggableList };
+
+import DraggableList from './components/DraggableList.vue';
+import type {DraggableItem} from '@drag-list/core';
+
+export {DraggableList};
+export type { DraggableItem };
 
 export default {
   install(app: App) {

@@ -25,9 +25,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.17.29",
+    "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^8.57.1",
+    "eslint": "^9.23.0",
     "postcss": "^8.5.3",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2"

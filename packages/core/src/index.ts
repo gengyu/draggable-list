@@ -10,6 +10,13 @@ const insertAfter = (referenceNode: Node, newNode: Node) => {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 };
 
+const getOffsetTopByParent = (element: HTMLElement, parent: HTMLElement | null) => {
+  const itemRect = element.getBoundingClientRect();
+  const parentRect = parent?.getBoundingClientRect();
+  return itemRect.top - (parentRect?.top ?? 0);
+};
+
+
 export interface DraggableItem {
   element: HTMLElement;
   index: number;
@@ -23,7 +30,7 @@ export interface DraggableListOptions {
   /** 列表容器选择器或元素 */
   container: HTMLElement | string;
   /** 列表项选择器 */
-  itemSelector?: string;
+  // itemSelector?: string;
   /** 拖动开始时的回调 */
   onDragStart?: (item: DraggableItem) => void;
   /** 拖动过程中的回调 */
@@ -55,6 +62,7 @@ export interface DraggableListReturn {
   init: () => void;
   /** 销毁函数 */
   destroy: () => void;
+  append: (options: {container: HTMLElement | string}) => void;
 }
 
 type DragEvent = MouseEvent | TouchEvent;
@@ -65,10 +73,10 @@ type DragEvent = MouseEvent | TouchEvent;
  * @returns DraggableListReturn
  */
 export function useDraggableList(options: DraggableListOptions): DraggableListReturn {
-  const {
+  let {
     longPressDuration = 100,
     container,
-    itemSelector = '.dl-item',
+
     onDragStart,
     onDragMove,
     onDragEnd,
@@ -76,6 +84,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     enableMouse = true,
     draggingClass = 'dl-dragging'
   } = options;
+  const itemSelector = '.dl-item';
 
   const state: DraggableListState = {
     items: [],
@@ -109,7 +118,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     state.currentIndex = state.draggingItem.index;
 
     // 处理排序
-    const items = Array.from(listContainer.querySelectorAll(itemSelector));
+    const items = Array.from(listContainer.children);
     const currentIndex = items.indexOf(item);
     startItemIndex = currentIndex;
     if (endItemIndex === undefined) {
@@ -131,7 +140,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
   };
 
   const stopDragging = () => {
-    if (!state.draggingItem || !listContainer) return;
+    if (!state.draggingItem || !state.draggingItem.element || !listContainer) return;
 
     const items = Array.from(listContainer.querySelectorAll(itemSelector));
     state.draggingItem.element.addEventListener('transitionend', () => {
@@ -194,17 +203,21 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     if (currentPlaceholderIndex === moveIndex) return;
 
     currentList.splice(moveIndex, 0, state.draggingItem.element);
-    const containerRect = listContainer.getBoundingClientRect();
+    // const containerRect = listContainer.getBoundingClientRect();
     currentList.forEach((element, index) => {
-      const moveTop = index * state.draggingItem!.element.offsetHeight;
-      const itemRect = element.getBoundingClientRect();
-      const offsetTop = itemRect.top - containerRect.top;
-      const moveDistance = moveTop - offsetTop;
+      if(element === state?.draggingItem?.element) return;
+      const endTop = index * state.draggingItem!.element.offsetHeight; // 插入的位置
+      // const itemRect = element.getBoundingClientRect();
+      const offsetTop = getOffsetTopByParent(element, listContainer); //  目前的位置
+
+      const distance = offsetTop - endTop;
       const styleTransform = getComputedStyle(element).transform;
       const currentY = styleTransform === 'none' ? 0 : parseFloat(styleTransform.split(',')[5]);
-      element.style.transform = `translateY(${currentY + moveDistance}px)`;
+      element.style.transform = `translateY(${currentY - distance}px)`;
     });
   };
+
+
 
   const moveItem = (clientY: number) => {
     if (!state.draggingItem || !listContainer) return;
@@ -232,6 +245,9 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
   const handleMouseDown = (e: DragEvent) => {
     e.preventDefault();
+    if(!listContainer) return;
+    const items = Array.from(listContainer.children);
+    items.forEach(item=> item.classList.add('dl-item'))
     const target = e.target instanceof Element ? e.target : null;
     const item = target?.closest(itemSelector);
     if (!item || !(item instanceof HTMLElement)) return;
@@ -323,9 +339,16 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     }
   };
 
+  const append = (options: {container: HTMLElement | string})=> {
+    onUnmounted();
+    container = options.container;
+    onMounted();
+  }
+
   return {
     state,
     init: onMounted,
-    destroy: onUnmounted
-  };
+    destroy: onUnmounted,
+    append: append,
+  } as DraggableListReturn;
 }
