@@ -9,14 +9,13 @@
     cursor: move;
     transition: transform, boix-shadow 0.2s ease;
     user-select: none;
-    justify-content: space-between;
-    align-items: center;
+
 }
 
 .dl-item.dl-dragging {
     cursor: grabbing;
     opacity: 0.8;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 

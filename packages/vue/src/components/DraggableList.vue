@@ -71,26 +71,3 @@ export default defineComponent<Props>({
 });
 </script>
 
-<style>
-.dl-container {
-  position: relative;
-  user-select: none;
-}
-
-.dl-item {
-  transition: transform 0.2s ease;
-  cursor: grab;
-}
-
-.dl-item.dl-dragging {
-  cursor: grabbing;
-  opacity: 0.8;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1;
-}
-
-.dl-item.dl-dragging * {
-  pointer-events: none;
-}
-</style> 

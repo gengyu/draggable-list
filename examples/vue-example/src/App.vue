@@ -90,7 +90,7 @@ const handleDelete = (item: CustomItem) => {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 .demo-section {

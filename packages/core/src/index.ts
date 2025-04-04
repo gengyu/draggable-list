@@ -16,6 +16,16 @@ const getOffsetTopByParent = (element: HTMLElement, parent: HTMLElement | null) 
   return itemRect.top - (parentRect?.top ?? 0);
 };
 
+const getOuterHeightWithMargin = (element: HTMLElement): number => {
+  const rect = element.getBoundingClientRect();
+  const style = window.getComputedStyle(element);
+
+  const marginTop = parseFloat(style.marginTop);
+  // const marginBottom = parseFloat(style.marginBottom);
+
+  return rect.height + marginTop;
+};
+
 
 export interface DraggableItem {
   element: HTMLElement;
@@ -144,6 +154,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
     const items = Array.from(listContainer.querySelectorAll(itemSelector));
     state.draggingItem.element.addEventListener('transitionend', () => {
+      console.log('transitionend')
       items.forEach((element) => {
         if (element instanceof HTMLElement) {
           element.style.transition = 'none';
@@ -182,7 +193,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
     const containerRect = listContainer.getBoundingClientRect();
     const draggedItem = state.draggingItem as DraggableItem;
-    const moveTop = endItemIndex! * draggedItem.element.offsetHeight;
+    const moveTop = endItemIndex! * getOuterHeightWithMargin(draggedItem.element);
     const itemRect = draggedItem.element.getBoundingClientRect();
     const offsetTop = itemRect.top - containerRect.top;
     const moveDistance = moveTop - offsetTop;
@@ -206,7 +217,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     // const containerRect = listContainer.getBoundingClientRect();
     currentList.forEach((element, index) => {
       if(element === state?.draggingItem?.element) return;
-      const endTop = index * state.draggingItem!.element.offsetHeight; // 插入的位置
+      const endTop = index * getOuterHeightWithMargin(state.draggingItem!.element); // 插入的位置
       // const itemRect = element.getBoundingClientRect();
       const offsetTop = getOffsetTopByParent(element, listContainer); //  目前的位置
 
@@ -218,18 +229,17 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
   };
 
 
-
   const moveItem = (clientY: number) => {
     if (!state.draggingItem || !listContainer) return;
 
     const deltaY = clientY - startYPosition;
     const draggedItemTop = initialOffset + deltaY;
     state.draggingItem.element.style.transform = `translateY(${deltaY}px)`;
-    const draggedItemBottom = draggedItemTop + state.draggingItem.element.offsetHeight;
+    const draggedItemBottom = draggedItemTop + getOuterHeightWithMargin(state.draggingItem.element);
     const draggedItemMiddle = draggedItemTop / 2 + draggedItemBottom / 2;
 
     const items = Array.from(listContainer.querySelectorAll(itemSelector));
-    let moveEndIndex = Math.trunc(draggedItemMiddle / state.draggingItem.element.offsetHeight);
+    let moveEndIndex = Math.trunc(draggedItemMiddle / getOuterHeightWithMargin(state.draggingItem.element));
     moveEndIndex = moveEndIndex >= 0 ? moveEndIndex : 0;
     moveEndIndex = moveEndIndex < items.length ? moveEndIndex : items.length - 1;
 
@@ -301,8 +311,8 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     if (enableMouse) {
       listContainer.addEventListener('mousedown', handleMouseDown);
       listContainer.addEventListener('mousemove', handleMouseMove);
-      listContainer.addEventListener('mouseup', handleMouseUp);
-      listContainer.addEventListener('mouseleave', handleMouseUp);
+      document.body.addEventListener('mouseup', handleMouseUp);
+      document.body.addEventListener('mouseleave', handleMouseUp);
     }
 
     if (enableTouch) {
@@ -318,8 +328,8 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
     if (enableMouse) {
       listContainer.removeEventListener('mousedown', handleMouseDown);
       listContainer.removeEventListener('mousemove', handleMouseMove);
-      listContainer.removeEventListener('mouseup', handleMouseUp);
-      listContainer.removeEventListener('mouseleave', handleMouseUp);
+      document.body.removeEventListener('mouseup', handleMouseUp);
+      document.body.removeEventListener('mouseleave', handleMouseUp);
     }
 
     if (enableTouch) {
