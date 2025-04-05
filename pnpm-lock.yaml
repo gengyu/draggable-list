@@ -28,6 +28,13 @@ importers:
         version: 5.8.2
 
   docs:
+    dependencies:
+      '@drag-list/core':
+        specifier: workspace:*
+        version: link:../packages/core
+      '@drag-list/vue':
+        specifier: workspace:*
+        version: link:../packages/vue
     devDependencies:
       vitepress:
         specifier: ^1.6.3
