@@ -191,15 +191,15 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
     state.draggingItem.element.classList.remove(draggingClass);
 
-    const containerRect = listContainer.getBoundingClientRect();
-    const draggedItem = state.draggingItem as DraggableItem;
-    const moveTop = endItemIndex! * getOuterHeightWithMargin(draggedItem.element);
-    const itemRect = draggedItem.element.getBoundingClientRect();
-    const offsetTop = itemRect.top - containerRect.top;
-    const moveDistance = moveTop - offsetTop;
+     const draggedItem = state.draggingItem as DraggableItem;
+    const endTop = endItemIndex! * getOuterHeightWithMargin(draggedItem.element);
+
+    // const offsetTop = itemRect.top - containerRect.top;
+    const offsetTop = getOffsetTopByParent(draggedItem.element, listContainer);
+    const distance = endTop - offsetTop;
     const styleTransform = getComputedStyle(draggedItem.element).transform;
     const currentY = styleTransform === 'none' ? 0 : parseFloat(styleTransform.split(',')[5]);
-    draggedItem.element.style.transform = `translateY(${currentY + moveDistance}px)`;
+    draggedItem.element.style.transform = `translateY(${currentY + distance}px)`;
   };
 
   const sortItems = (moveIndex: number, currentPlaceholderIndex: number) => {
@@ -221,13 +221,12 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
       // const itemRect = element.getBoundingClientRect();
       const offsetTop = getOffsetTopByParent(element, listContainer); //  目前的位置
 
-      const distance = offsetTop - endTop;
+      const distance = endTop - offsetTop  ;
       const styleTransform = getComputedStyle(element).transform;
       const currentY = styleTransform === 'none' ? 0 : parseFloat(styleTransform.split(',')[5]);
-      element.style.transform = `translateY(${currentY - distance}px)`;
+      element.style.transform = `translateY(${currentY + distance}px)`;
     });
   };
-
 
   const moveItem = (clientY: number) => {
     if (!state.draggingItem || !listContainer) return;
