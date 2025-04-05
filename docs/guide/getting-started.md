@@ -2,12 +2,30 @@
 
 ## 安装
 
-使用 npm 或 yarn 安装：
+使用 npm、yarn 或 pnpm 安装：
 
 ```bash
+# npm
 npm install @drag-list/core
-# 或
+
+# yarn
 yarn add @drag-list/core
+
+# pnpm
+pnpm add @drag-list/core
+```
+
+如果你使用 Vue 3，可以安装 Vue 组件包：
+
+```bash
+# npm
+npm install @drag-list/vue
+
+# yarn
+yarn add @drag-list/vue
+
+# pnpm
+pnpm add @drag-list/vue
 ```
 
 ## 基础用法
@@ -72,4 +90,4 @@ import '@drag-list/core/dist/style.css'
 - Safari >= 12
 - Edge >= 79
 - iOS Safari >= 12
-- Android Chrome >= 60 
+- Android Chrome >= 60

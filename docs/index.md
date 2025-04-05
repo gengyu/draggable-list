@@ -15,14 +15,14 @@ hero:
 features:
   - icon: ⚡️
     title: 轻量级
-    details: 零依赖，体积小巧，性能优异
+    details: 零依赖，体积小巧，性能优异，快速加载
   - icon: 🎯
     title: 易用性
-    details: 简单的 API，快速上手，支持自定义
+    details: 简单的 API，快速上手，支持自定义配置
   - icon: 📱
     title: 多端支持
-    details: 同时支持鼠标和触摸操作
+    details: 同时支持鼠标和触摸操作，响应式设计
   - icon: 🎨
     title: 样式定制
-    details: 提供默认样式，支持自定义主题
---- 
+    details: 提供默认样式，支持自定义主题和动画效果
+---

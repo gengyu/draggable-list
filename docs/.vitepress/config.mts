@@ -49,7 +49,7 @@ export default defineConfig({
     ],
     footer: {
       message: '基于 MIT 许可发布',
-      copyright: 'Copyright © 2024-present Your Name & Contributors'
+      copyright: 'Copyright © 2024-present gengyu & Contributors'
     },
   },
   vite: {

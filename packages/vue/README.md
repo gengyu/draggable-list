@@ -1,6 +1,6 @@
 # @drag-list/vue
 
-Vue 3 的可拖动排序列表组件。
+Vue 3 的可拖动排序列表组件，基于 @drag-list/core 构建，提供易用的 Vue 组件封装。
 
 ## 安装
 
@@ -252,4 +252,4 @@ const handleDelete = (item: CustomItem) => {
   pointer-events: none;
 }
 </style>
-``` 
+```

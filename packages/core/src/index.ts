@@ -309,7 +309,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
     if (enableMouse) {
       listContainer.addEventListener('mousedown', handleMouseDown);
-      listContainer.addEventListener('mousemove', handleMouseMove);
+      document.body.addEventListener('mousemove', handleMouseMove);
       document.body.addEventListener('mouseup', handleMouseUp);
       document.body.addEventListener('mouseleave', handleMouseUp);
     }
@@ -326,7 +326,7 @@ export function useDraggableList(options: DraggableListOptions): DraggableListRe
 
     if (enableMouse) {
       listContainer.removeEventListener('mousedown', handleMouseDown);
-      listContainer.removeEventListener('mousemove', handleMouseMove);
+      document.body.removeEventListener('mousemove', handleMouseMove);
       document.body.removeEventListener('mouseup', handleMouseUp);
       document.body.removeEventListener('mouseleave', handleMouseUp);
     }

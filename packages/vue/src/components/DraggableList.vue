@@ -57,7 +57,7 @@ export default defineComponent<Props>({
     });
 
     onMounted(() => {
-      append({ container: container.value});
+      append({ container: container.value as HTMLElement});
     });
 
     onUnmounted(() => {

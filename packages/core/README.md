@@ -1,6 +1,6 @@
 # @drag-list/core
 
-一个轻量级的可拖动排序列表核心功能库。
+一个轻量级的可拖动排序列表核心功能库，提供基础的拖拽功能，零依赖。
 
 ## 安装
 
@@ -69,8 +69,6 @@ destroy();
 interface DraggableItem {
   element: HTMLElement;  // 元素
   index: number;         // 索引
-  top: number;          // 顶部位置
-  height: number;       // 高度
 }
 ```
 
@@ -118,4 +116,4 @@ interface DraggableListState {
 }
 ```
 
-你可以通过 `draggingClass` 选项自定义拖动时的样式类名。 
+你可以通过 `draggingClass` 选项自定义拖动时的样式类名。
