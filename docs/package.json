@@ -2,6 +2,7 @@
   "name": "draggable-list-docs",
   "version": "1.0.5",
   "private": true,
+  "author": "gengyu",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",

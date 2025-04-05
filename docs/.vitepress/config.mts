@@ -45,7 +45,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yourusername/draggable-list' }
+      { icon: 'github', link: 'https://github.com/gengyu/draggable-list' }
     ],
     footer: {
       message: '基于 MIT 许可发布',

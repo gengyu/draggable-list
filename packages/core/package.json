@@ -2,6 +2,7 @@
   "name": "@drag-list/core",
   "version": "1.0.5",
   "private": false,
+  "author": "gengyu",
   "description": "一个轻量级的可拖动排序列表组件",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -22,7 +23,7 @@
     "list",
     "typescript"
   ],
-  "author": "",
+
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.14.0",

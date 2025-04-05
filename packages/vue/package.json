@@ -3,6 +3,7 @@
   "version": "1.0.5",
   "private": false,
   "description": "Vue 3 可拖动排序列表组件",
+  "author": "gengyu",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -15,7 +16,7 @@
     "dev-dev": "vite build --watch --mode development",
     "lint": "eslint src --ext .ts,.vue",
     "test": "jest",
-    "publish": "npm publish --registry https://registry.npmjs.org/"
+    "publish": "npm publish --access public --registry https://registry.npmjs.org/"
   },
   "keywords": [
     "drag",
@@ -25,7 +26,10 @@
     "vue3",
     "typescript"
   ],
-  "author": "",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "MIT",
   "peerDependencies": {
     "vue": "^3.0.0"

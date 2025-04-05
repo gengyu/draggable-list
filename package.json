@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.5",
   "description": "一个轻量级的可拖动排序列表组件",
+  "author": "gengyu",
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
@@ -11,6 +12,7 @@
     "prunet": "pnpm store prune",
     "up": "pnpm  -r update --latest",
     "prepublishOnly": "pnpm build",
+    "login": "npm login --registry https://registry.npmjs.org/",
     "publish": "npm publish --registry https://registry.npmjs.org/",
     "publish:beta": "npm publish --tag beta --registry https://registry.npmjs.org/"
   },
@@ -21,7 +23,6 @@
     "typescript",
     "vue"
   ],
-  "author": "",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
