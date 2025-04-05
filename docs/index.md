@@ -10,7 +10,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/yourusername/draggable-list
+      link: https://github.com/gengyu/draggable-list
 
 features:
   - icon: ⚡️
