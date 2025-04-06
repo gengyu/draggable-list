@@ -95,7 +95,6 @@ const { state, init, destroy } = useDraggableList({
 你可以通过 `state` 来监听拖动状态：
 
 ```vue
-
 <template>
   <div class="dl-container">
     <div v-for="(item, index) in items" :key="index" class="dl-item">
@@ -108,22 +107,22 @@ const { state, init, destroy } = useDraggableList({
 </template>
 
 <script setup>
-  import {ref, onMounted, onUnmounted} from 'vue'
-  import {useDraggableList} from '@drag-list/core'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useDraggableList } from '@drag-list/core'
 
-  const items = ref(['项目 1', '项目 2', '项目 3'])
+const items = ref(['项目 1', '项目 2', '项目 3'])
 
-  const {state, init, destroy} = useDraggableList({
-    container: '.dl-container',
-    itemSelector: '.dl-item',
-  })
+const { state, init, destroy } = useDraggableList({
+  container: '.dl-container',
+  itemSelector: '.dl-item',
+})
 
-  onMounted(() => {
-    init()
-  })
+onMounted(() => {
+  init()
+})
 
-  onUnmounted(() => {
-    destroy()
-  })
+onUnmounted(() => {
+  destroy()
+})
 </script>
 ``` 

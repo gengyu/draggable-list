@@ -63,7 +63,6 @@
 你可以自定义长按触发时间，以适应不同的用户体验需求：
 
 ```vue
-
 <template>
   <div class="dl-container">
     <div v-for="(item, index) in items" :key="index" class="dl-item">
@@ -73,30 +72,30 @@
 </template>
 
 <script setup>
-  import {ref, onMounted, onUnmounted} from 'vue'
-  import {useDraggableList} from '@drag-list/core'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useDraggableList } from '@drag-list/core'
 
-  const items = ref(['项目 1', '项目 2', '项目 3'])
+const items = ref(['项目 1', '项目 2', '项目 3'])
 
-  const {state, init, destroy} = useDraggableList({
-    container: '.dl-container',
-    itemSelector: '.dl-item',
-    // 设置长按触发时间为300毫秒
-    longPressDuration: 300,
-    onDragEnd: (startIndex, endIndex) => {
-      items.value.splice(endIndex, 0,
-          items.value.splice(startIndex, 1)[0]
-      );
-    }
-  })
+const { state, init, destroy } = useDraggableList({
+  container: '.dl-container',
+  itemSelector: '.dl-item',
+  // 设置长按触发时间为300毫秒
+  longPressDuration: 300,
+  onDragEnd: (startIndex, endIndex) => {
+    items.value.splice(endIndex, 0,
+      items.value.splice(startIndex, 1)[0]
+    );
+  }
+})
 
-  onMounted(() => {
-    init()
-  })
+onMounted(() => {
+  init()
+})
 
-  onUnmounted(() => {
-    destroy()
-  })
+onUnmounted(() => {
+  destroy()
+})
 </script>
 ```
 

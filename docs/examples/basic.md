@@ -4,45 +4,34 @@
 
 最基本的可拖动列表实现：
 
-```vue
-<template>
-  <div class="dl-container">
-    <div v-for="(item, index) in items" :key="index" class="dl-item">
-      {{ item }}
-    </div>
-  </div>
-</template>
+```html
+<div class="dl-container">
+  <div class="dl-item">项目 1</div>
+  <div class="dl-item">项目 2</div>
+  <div class="dl-item">项目 3</div>
+</div>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useDraggableList } from '@drag-list/core'
+<script>
+  const items = ['项目 1', '项目 2', '项目 3'];
+  
+  const { init, destroy } = DraggableList({
+    container: '.dl-container',
+    itemSelector: '.dl-item',
+    onDragEnd: (startIndex, endIndex) => {
+      items.splice(endIndex, 0, items.splice(startIndex, 1)[0]);
+    }
+  });
 
-const items = ref(['项目 1', '项目 2', '项目 3'])
-
-const { state, init, destroy } = useDraggableList({
-  container: '.dl-container',
-  itemSelector: '.dl-item',
-  onDragEnd: (startIndex, endIndex) => {
-    items.value.splice(endIndex, 0,
-      items.value.splice(startIndex, 1)[0]
-    );
-  }
-})
-
-onMounted(() => {
-  init()
-})
-
-onUnmounted(() => {
-  destroy()
-})
+  document.addEventListener('DOMContentLoaded', () => {
+    init();
+  });
 </script>
 
 <style>
-.dl-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
+  .dl-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 </style>
 ```
 
@@ -50,46 +39,57 @@ onUnmounted(() => {
 
 添加序号和拖动手柄的列表：
 
-```vue
-<template>
-  <div class="dl-container">
-    <div v-for="(item, index) in items" :key="index" class="dl-item">
-      <div class="item-content">
-        <span class="item-index">{{ index + 1 }}</span>
-        <span class="item-text">{{ item }}</span>
-      </div>
-      <div class="drag-handle">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 6H16M8 12H16M8 18H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
+```html
+<div class="dl-container">
+  <div class="dl-item">
+    <div class="item-content">
+      <span class="item-index">1</span>
+      <span class="item-text">项目 1</span>
+    </div>
+    <div class="drag-handle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 6H16M8 12H16M8 18H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </div>
   </div>
-</template>
+  <div class="dl-item">
+    <div class="item-content">
+      <span class="item-index">2</span>
+      <span class="item-text">项目 2</span>
+    </div>
+    <div class="drag-handle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 6H16M8 12H16M8 18H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="dl-item">
+    <div class="item-content">
+      <span class="item-index">3</span>
+      <span class="item-text">项目 3</span>
+    </div>
+    <div class="drag-handle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 6H16M8 12H16M8 18H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useDraggableList } from '@drag-list/core'
+<script>
+  const items = ['项目 1', '项目 2', '项目 3'];
+  
+  const { init, destroy } = DraggableList({
+    container: '.dl-container',
+    itemSelector: '.dl-item',
+    onDragEnd: (startIndex, endIndex) => {
+      items.splice(endIndex, 0, items.splice(startIndex, 1)[0]);
+    }
+  });
 
-const items = ref(['项目 1', '项目 2', '项目 3'])
-
-const { state, init, destroy } = useDraggableList({
-  container: '.dl-container',
-  itemSelector: '.dl-item',
-  onDragEnd: (startIndex, endIndex) => {
-    items.value.splice(endIndex, 0,
-      items.value.splice(startIndex, 1)[0]
-    );
-  }
-})
-
-onMounted(() => {
-  init()
-})
-
-onUnmounted(() => {
-  destroy()
-})
+  document.addEventListener('DOMContentLoaded', () => {
+    init();
+  });
 </script>
 
 <style>
@@ -162,4 +162,4 @@ onUnmounted(() => {
 .dl-item.dl-dragging .drag-handle {
   cursor: grabbing;
 }
-</style> 
+</style>

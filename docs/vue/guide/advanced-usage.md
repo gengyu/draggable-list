@@ -76,14 +76,13 @@ const { state, init, destroy } = useDraggableList({
 你可以创建嵌套的可拖动列表：
 
 ```vue
-
 <template>
   <div class="dl-container">
     <div v-for="(group, groupIndex) in groups" :key="group.id" class="dl-group">
       <div class="group-header">{{ group.name }}</div>
       <div class="dl-container">
-        <div v-for="(item, itemIndex) in group.items"
-             :key="item.id"
+        <div v-for="(item, itemIndex) in group.items" 
+             :key="item.id" 
              class="dl-item">
           {{ item.name }}
         </div>
@@ -93,66 +92,60 @@ const { state, init, destroy } = useDraggableList({
 </template>
 
 <script setup>
-  import {ref, onMounted, onUnmounted} from 'vue'
-  import {useDraggableList} from '@drag-list/core'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useDraggableList } from '@drag-list/core'
 
-  const groups = ref([
-    {
-      id: 1,
-      name: '组 1',
-      items: [
-        {id: 1, name: '项目 1'},
-        {id: 2, name: '项目 2'},
-      ]
-    },
-    {
-      id: 2,
-      name: '组 2',
-      items: [
-        {id: 3, name: '项目 3'},
-        {id: 4, name: '项目 4'},
-      ]
+const groups = ref([
+  {
+    id: 1,
+    name: '组 1',
+    items: [
+      { id: 1, name: '项目 1' },
+      { id: 2, name: '项目 2' },
+    ]
+  },
+  {
+    id: 2,
+    name: '组 2',
+    items: [
+      { id: 3, name: '项目 3' },
+      { id: 4, name: '项目 4' },
+    ]
+  }
+])
+
+// 为每个组创建独立的拖动实例
+const instances = groups.value.map(() => 
+  useDraggableList({
+    container: '.dl-container',
+    itemSelector: '.dl-item',
+    onDragEnd: (startIndex, endIndex) => {
+      // 处理拖动结束
     }
-  ])
-  
-  const dlContainerRef = ref([]);
-  let instances = []
-
-
-
-  onMounted(() => {
-    // 为每个组创建独立的拖动实例
-    instances = dlContainerRef.value.map(container => {
-      const instance = useDraggableList({
-        container: '.dl-container',
-        itemSelector: '.dl-item',
-        onDragEnd: (startIndex, endIndex) => {
-          // 处理拖动结束
-        }
-      })
-      instance.init()
-      return instance;
-    })
   })
+)
 
-  onUnmounted(() => {
-    instances.forEach(instance => instance.destroy())
-    instances = [];
-  })
+onMounted(() => {
+  instances.forEach(instance => instance.init())
+})
+
+onUnmounted(() => {
+  instances.forEach(instance => instance.destroy())
+})
 </script>
 
 <style>
-  .dl-group {
-    margin-bottom: 20px;
-  }
+.dl-group {
+  margin-bottom: 20px;
+}
 
-  .group-header {
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding: 8px;
-    background: #f5f5f5;
-    border-radius: 4px;
-  }
+.group-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
 </style>
 ```
 
