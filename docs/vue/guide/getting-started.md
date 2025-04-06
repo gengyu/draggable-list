@@ -32,8 +32,9 @@ pnpm add @drag-list/vue
 
 根据你的技术栈选择使用方式：
 
-- [原生JavaScript使用指南](/guide/javascript-usage)
-- [Vue 3使用指南](/guide/vue-usage)
+[//]: # (- [原生JavaScript使用指南]&#40;/guide/javascript-usage&#41;)
+
+[//]: # (- [Vue 3使用指南]&#40;/guide/vue-usage&#41;)
 
 ## 浏览器支持
 
