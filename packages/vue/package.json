@@ -16,7 +16,7 @@
     "dev-dev": "vite build --watch --mode development",
     "lint": "eslint src --ext .ts,.vue",
     "test": "jest",
-    "publish": "npm publish --access public --registry https://registry.npmjs.org/"
+    "publish": "pnpm publish --access public --registry https://registry.npmjs.org/"
   },
   "keywords": [
     "drag",

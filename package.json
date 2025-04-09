@@ -14,7 +14,7 @@
     "prepublishOnly": "pnpm build",
     "pack ": "pnpm  pack ",
     "login": "pnpm login --registry https://registry.npmjs.org/",
-    "publish": "pnpm publish  ",
+    "publish": "pnpm publish --access public --registry https://registry.npmjs.org/",
     "publish:beta": "pnpm publish --tag beta --registry https://registry.npmjs.org/"
   },
   "keywords": [
