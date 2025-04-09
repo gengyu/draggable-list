@@ -1,7 +1,7 @@
 {
   "name": "@drag-list/root",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "一个轻量级的可拖动排序列表组件",
   "author": "gengyu",
   "scripts": {
@@ -12,9 +12,10 @@
     "prunet": "pnpm store prune",
     "up": "pnpm  -r update --latest",
     "prepublishOnly": "pnpm build",
+    "pack ": "pnpm  pack ",
     "login": "pnpm login --registry https://registry.npmjs.org/",
-    "publish": "pnpm publish --registry https://registry.npmjs.org/",
-    "publish:beta": "npm publish --tag beta --registry https://registry.npmjs.org/"
+    "publish": "pnpm publish  ",
+    "publish:beta": "pnpm publish --tag beta --registry https://registry.npmjs.org/"
   },
   "keywords": [
     "drag",

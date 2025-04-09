@@ -1,6 +1,6 @@
 {
   "name": "@drag-list/vue",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "Vue 3 可拖动排序列表组件",
   "author": "gengyu",

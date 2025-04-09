@@ -1,6 +1,6 @@
 {
   "name": "@drag-list/core",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "author": "gengyu",
   "description": "一个轻量级的可拖动排序列表组件",
