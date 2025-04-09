@@ -1,9 +1,20 @@
 {
   "name": "@drag-list/vue-example",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "author": "gengyu",
+  "description": "A Vue example for draggable-list component.",
+  "keywords": ["vue", "draggable", "list", "example"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gengyu/draggable-list.git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

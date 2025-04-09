@@ -3,6 +3,10 @@
   "version": "1.0.5",
   "private": true,
   "author": "gengyu",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",

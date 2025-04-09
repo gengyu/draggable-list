@@ -19,10 +19,20 @@
   },
   "keywords": [
     "drag",
+    "draggable",
     "sort",
+    "sortable",
     "list",
     "typescript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gengyu/draggable-list"
+  },
+  "homepage": "https://github.com/gengyu/draggable-list#readme",
+  "bugs": {
+    "url": "https://github.com/gengyu/draggable-list/issues"
+  },
 
   "license": "MIT",
   "devDependencies": {

@@ -5,15 +5,15 @@
   "description": "一个轻量级的可拖动排序列表组件",
   "author": "gengyu",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm  -r build",
     "dev": "pnpm -r --parallel dev",
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
     "prunet": "pnpm store prune",
     "up": "pnpm  -r update --latest",
     "prepublishOnly": "pnpm build",
-    "login": "npm login --registry https://registry.npmjs.org/",
-    "publish": "npm publish --registry https://registry.npmjs.org/",
+    "login": "pnpm login --registry https://registry.npmjs.org/",
+    "publish": "pnpm publish --registry https://registry.npmjs.org/",
     "publish:beta": "npm publish --tag beta --registry https://registry.npmjs.org/"
   },
   "keywords": [
